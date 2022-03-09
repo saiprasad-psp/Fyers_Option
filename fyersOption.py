@@ -6,9 +6,8 @@ Created on Tue Jan 25 12:35:47 2022
 """
 
 from fyers_api import fyersModel
-import os, platform, json, requests
+import os, platform, json
 import pandas as pd
-from io import StringIO
 from datetime import datetime
 
 current_dir = '/home/ubuntu/Algo'
@@ -30,8 +29,7 @@ def get_expiry():
     global expiry, df_symbols, next_expiry, df_symbols_next_exp, lot_size
     fyers_fo = "https://public.fyers.in/sym_details/NSE_FO.csv"
     
-    r = requests.get(fyers_fo)
-    df_symbols = pd.read_csv(StringIO(r.text), index_col=False, header=None)
+    df_symbols = pd.read_csv(fyers_fo, index_col=False, header=None)
     df_symbols = df_symbols[df_symbols[13] =='BANKNIFTY' ]
     df_symbols.reset_index(drop=True, inplace=True)
     df_symbols[8] = pd.to_datetime(df_symbols[8],unit='s').dt.date
