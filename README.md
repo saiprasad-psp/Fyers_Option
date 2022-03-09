@@ -1,7 +1,7 @@
 # Fyers_Option
 Get Banknifty fyers option data
 
-**Exampler usage **
+**Example usage **
 
 import fyersOption
 
